@@ -14,6 +14,8 @@ class CLI(ArgumentParser):
                           help="use digits in password")
         self.add_argument("-p", "--punc", action="store_true",
                           help="use punctuations in password")
+        self.add_argument("-s", "--special", type=str,
+                          help="special characters to be used in password")
 
 
 cli = CLI()

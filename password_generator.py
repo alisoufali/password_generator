@@ -1,10 +1,12 @@
 import string
 import random
+from typing import Union
 
 
 def generate_password(length: int = 8, use_upper: bool = False,
                       use_lower: bool = False, use_digit: bool = False,
-                      use_punctuation: bool = False) -> str:
+                      use_punctuation: bool = False,
+                      specials: Union[str, None] = None) -> str:
     pool = ""
     password_characters = []
 
@@ -20,6 +22,9 @@ def generate_password(length: int = 8, use_upper: bool = False,
     if use_punctuation:
         pool += string.punctuation
         password_characters.append(random.choice(string.punctuation))
+    if specials:
+        pool += specials
+        password_characters.append(random.choice(specials))
 
     if len(pool) == 0:
         pool += string.ascii_uppercase + string.ascii_lowercase
